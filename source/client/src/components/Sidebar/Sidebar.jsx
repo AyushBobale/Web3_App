@@ -24,7 +24,7 @@ export const Sidebar = () => {
   };
   return (
     <div className={sideBar ? "sidebar open" : "sidebar"}>
-      <div className="sidebar-profile">
+      <div className={sideBar ? "sidebar-profile open" : "sidebar-profile"}>
         <div className="profile-cont">
           <img src={profile} alt="profile" />
           <h1>Name</h1>
