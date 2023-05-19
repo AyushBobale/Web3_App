@@ -4,6 +4,7 @@ import { ThemeProvider, createGlobalStyle } from "styled-components";
 
 import { Home } from "./pages/Home/Home";
 import { Layout } from "./components/layouts/Layout";
+import { PageNotFound } from "./pages/PageNotFound/PageNotFound";
 import React from "react";
 
 export const App = () => {
@@ -16,7 +17,8 @@ export const App = () => {
       <GlobalStyle />
       <Routes>
         <Route path="/" element={<Layout />}>
-          <Route path="/home" element={<Home />} />
+          <Route path="/" element={<Home />} />
+          <Route path="*" element={<PageNotFound />} />
         </Route>
       </Routes>
     </ThemeProvider>
