@@ -86,6 +86,7 @@ p {
   border-radius: 10px;
   padding: 6px 12px;
   font-weight: 600;
+  font-size: 14px;
 }
 
 .btn-dark {
@@ -95,4 +96,5 @@ p {
   border-radius: 10px;
   padding: 6px 12px;
   font-weight: 600;
+  font-size: 16px;
 }
