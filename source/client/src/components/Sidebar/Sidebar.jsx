@@ -37,17 +37,17 @@ export const Sidebar = () => {
           <p>Home</p>
         </NavLink>
 
-        <NavLink to="/section1">
+        <NavLink to="/section/1">
           <img src={section1} alt="home" />
           <p>Section 1</p>
         </NavLink>
 
-        <NavLink to="/section2">
+        <NavLink to="/section/2">
           <img src={section2} alt="home" />
           <p>Section 2</p>
         </NavLink>
 
-        <NavLink to="/section8">
+        <NavLink to="/section/8">
           <img src={section8} alt="home" />
           <p>Section 8</p>
         </NavLink>
