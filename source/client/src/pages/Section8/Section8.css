@@ -1,5 +1,41 @@
 .section-content {
   display: flex;
+  gap: 1rem;
+  width: 100%;
+}
+
+.todo-list-cont,
+.todo-list-cont.open {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 1rem;
+}
+
+.todo-list-cont.open {
+  width: 75%;
+}
+.todo-list-cont {
+  width: 100%;
+}
+
+.todo-edit-container,
+.todo-edit-container.open {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.todo-edit-container.open {
+  width: 25%;
+  /* display: block; */
+}
+.todo-edit-container {
+  display: none;
+  /* width: 0%; */
+}
+
+.todo-cont {
+  display: flex;
   flex-direction: column;
   gap: 1rem;
 }

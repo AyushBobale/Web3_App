@@ -1,9 +1,10 @@
 import "./Sidebar.css";
 
 import { toggleSidebar, toggleTheme } from "../../redux/siteSettingSlice";
-import { useAccount, useBalance, useEnsName } from "wagmi";
+import { useAccount, useBalance, useConnect, useEnsName } from "wagmi";
 import { useDispatch, useSelector } from "react-redux";
 
+import { InjectedConnector } from "wagmi/connectors/injected";
 import { NavLink } from "react-router-dom";
 import React from "react";
 import closing from "../../assets/images/closingIcon.svg";
@@ -34,6 +35,9 @@ export const Sidebar = () => {
     address: address,
     watch: true,
   });
+  const { connect } = useConnect({
+    connector: new InjectedConnector(),
+  });
 
   console.log(data);
 
@@ -42,7 +46,7 @@ export const Sidebar = () => {
       <div className={sideBar ? "nav-cont open" : "nav-cont"}>
         <div className="top">
           <div className={sideBar ? "sidebar-profile open" : "sidebar-profile"}>
-            <div className="profile-cont">
+            <div className="profile-cont" onClick={connect}>
               {/* <img src={profile} alt="profile" /> */}
               <div className="circle-bg">
                 {isConnected ? `${address.toString()?.slice(-10, -9)}` : ``}
@@ -78,7 +82,9 @@ export const Sidebar = () => {
                 {isConnected ? `${data.formatted}` : ``}
               </div>
               {sideBar &&
-                (isConnected ? `${data.formatted} ${data.symbol}` : "loading")}
+                (isConnected
+                  ? `${data.formatted} ${data.symbol}`
+                  : "Please log in")}
             </button>
             <button className="btn-light">{sideBar ? "Buy $XYZ" : "$"}</button>
           </div>

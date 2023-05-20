@@ -1,0 +1,17 @@
+.balance-btn {
+  background-color: #191b20;
+  display: flex;
+  align-items: center;
+  padding: 6px 12px;
+  border-radius: 12px;
+  gap: 1rem;
+}
+
+.btn-light-bal {
+  padding: 2px 8px;
+  font-size: 12px;
+  color: var(--primary-btn);
+  background: #a3e3ff;
+  border: none;
+  border-radius: 5px;
+}
