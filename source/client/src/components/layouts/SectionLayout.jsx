@@ -25,7 +25,7 @@ export const SectionLayout = () => {
           </div>
         </div>
       </div>
-      <div className="section-content">
+      <div className="section-root">
         <Outlet />
       </div>
     </div>

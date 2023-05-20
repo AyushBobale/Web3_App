@@ -6,6 +6,7 @@ import { createSearchParams, useSearchParams } from "react-router-dom";
 import { CreateTodoList } from "../../components/CreateTodoList/CreateTodoList";
 import { EditTodo } from "../../components/EditTodo/EditTodo";
 import { PaginationNavigator } from "../../components/PaginationNavigator/PaginationNavigator";
+import { TodoList } from "../../components/TodoList/TodoList";
 import { getTodoListsPaginated } from "../../utils/localStorageTodo";
 import { useSelector } from "react-redux";
 
@@ -47,9 +48,18 @@ export const Section8 = () => {
               : "todo-list-cont"
           }
         >
-          <div className="todo-cont">
-            <CreateTodoList />
-          </div>
+          {todoLists?.data?.map((elm) => {
+            return (
+              <div className="todo-cont">
+                <TodoList todolist={elm} />
+              </div>
+            );
+          })}
+          {todoLists?.data?.length < 3 && (
+            <div className="todo-cont">
+              <CreateTodoList />
+            </div>
+          )}
         </div>
         <div
           className={

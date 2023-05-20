@@ -1,4 +1,6 @@
 import "./PaginationNavigator.css";
+import "swiper/css";
+import "swiper/css/navigation";
 
 import React, { useEffect, useState } from "react";
 import { Swiper, SwiperSlide, useSwiper } from "swiper/react";
@@ -29,14 +31,10 @@ export const PaginationNavigator = ({
     <div className="pagination-root">
       <button className="prevpage">{"<"}</button>
       <Swiper
-        width={450}
+        width={200}
         slidesPerView={1}
-        spaceBetween={10}
-        centeredSlides={false}
-        slidesPerGroup={1}
-        grabCursor={true}
+        spaceBetween={20}
         loop={false}
-        loopFillGroupWithBlank={false}
         pagination={{
           clickable: true,
         }}
@@ -45,7 +43,7 @@ export const PaginationNavigator = ({
           nextEl: ".nextpage",
         }}
         modules={[Navigation]}
-        className="mySwiper"
+        className="mySwiper "
       >
         {paginationSlides.map((data) => {
           return (

@@ -5,26 +5,50 @@ import React, { useState } from "react";
 
 import { TodoCard } from "../TodoCard/TodoCard";
 import add from "../../assets/images/add.svg";
+import { addTodoToList } from "../../utils/localStorageTodo";
 import edit from "../../assets/images/edit.svg";
 import todoIcon from "../../assets/images/todoIcon.svg";
+import { updateState } from "../../redux/blockChainSlice";
+import { useDispatch } from "react-redux";
 
-export const TodoList = ({ id }) => {
+export const TodoList = ({ todolist }) => {
   const [value, setValue] = useState("");
+  const [todoName, setTodoName] = useState("");
+  const dispatch = useDispatch();
+
+  const handleNameChange = (event) => {
+    setTodoName(event.target.value);
+  };
   const handleChange = (event) => {
     setValue(event.target.value);
     event.target.style.height = "auto";
     event.target.style.height = event.target.scrollHeight + "px";
   };
+
+  const addTodo = () => {
+    if (value && todoName) {
+      addTodoToList(todolist?.id, todoName, value);
+      setValue("");
+      setTodoName("");
+      dispatch(updateState());
+    }
+  };
+
   return (
     <div className="todo-list-indv-cont">
-      <div className="todo-list-name">List Name</div>
+      <div className="todo-list-name">{todolist?.name}</div>
       <div className="todo-card">
         <div className="todo-header-root">
           <div className="todo-header">
             <img src={todoIcon} alt="" />
-            <input type="text" placeholder="Add Todo" />
+            <input
+              type="text"
+              value={todoName}
+              onChange={handleNameChange}
+              placeholder="Add Todo"
+            />
           </div>
-          <img src={add} alt="" />
+          <img src={add} onClick={addTodo} alt="" />
         </div>
         <textarea
           value={value}
@@ -32,8 +56,8 @@ export const TodoList = ({ id }) => {
           placeholder="Add to do description"
         ></textarea>
       </div>
-      {[1, 2, 3, 4, 5, 6]?.map((elm) => (
-        <TodoCard />
+      {todolist?.todos?.map((elm) => (
+        <TodoCard todo={elm} />
       ))}
     </div>
   );

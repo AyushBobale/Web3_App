@@ -1,3 +1,11 @@
+.pagi-outer-cont {
+  width: 100%;
+  display: flex;
+  gap: 1rem;
+  flex-direction: column;
+  padding: 1rem;
+}
+
 .section-content {
   display: flex;
   gap: 1rem;
@@ -27,22 +35,15 @@
 
 .todo-edit-container.open {
   width: 25%;
-  /* display: block; */
+  display: inline;
 }
 .todo-edit-container {
+  width: 0%;
   display: none;
-  /* width: 0%; */
 }
 
 .todo-cont {
   display: flex;
   flex-direction: column;
   gap: 1rem;
-}
-
-.pagi-outer-cont {
-  display: flex;
-  gap: 1rem;
-  flex-direction: column;
-  padding: 1rem;
 }

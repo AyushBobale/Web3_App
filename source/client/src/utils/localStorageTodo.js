@@ -13,7 +13,7 @@ export function getTodoListsPaginated(page, pageSize) {
   if (!todoLists?.length) {
     return { total: 0, data: [], page: 0 };
   }
-  let total = Math.ceil(todoLists.length / pageSize);
+  let total = Math.ceil((todoLists.length + 1) / pageSize);
   let startPos = page * pageSize || 0;
   let endPos = startPos + pageSize;
   return { total: total, data: todoLists?.slice(startPos, endPos), page: page };
