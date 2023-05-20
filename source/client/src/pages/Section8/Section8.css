@@ -36,13 +36,33 @@
 
 .todo-edit-container.open {
   width: 25%;
-  /* display: inline; */
+  position: static;
   border-left: var(--dark-grey) solid 3px;
 }
 .todo-edit-container {
   width: 0%;
-  /* display: none; */
-  border: none;
+  position: absolute;
+  right: 0;
+}
+
+.todo-edit-container.open > div,
+.todo-edit-container.open input,
+.todo-edit-container.open textarea {
+  padding: 1rem !important;
+}
+
+.todo-edit-container > div,
+.todo-edit-container input,
+.todo-edit-container textarea {
+  padding: 0 !important;
+}
+
+.todo-edit-container.open .edit-header {
+  display: block;
+}
+
+.todo-edit-container .edit-header {
+  display: none;
 }
 
 .todo-cont {

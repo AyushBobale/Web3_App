@@ -22,7 +22,7 @@ export const Section8 = () => {
   //   data: [],
   //   page: 0,
   // });
-  const TODO_LISTS_PER_PAGE = 2;
+  const TODO_LISTS_PER_PAGE = 3;
   const todoLists = useSelector((state) => state.rootReducer.account.todoLists);
 
   const setPage = (page) => {
