@@ -59,8 +59,9 @@ p {
 }
 
 .main-content {
-  padding-top: calc(var(--header-height));
+  margin-top: calc(var(--header-height));
   width: calc(100% - var(--sidebar-close-width));
+  min-height: calc(100vh - var(--header-height));
   margin-left: var(--sidebar-close-width);
   transition: margin-left 0.3s ease;
 }

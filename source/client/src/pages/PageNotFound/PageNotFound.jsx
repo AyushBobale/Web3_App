@@ -1,5 +1,11 @@
+import "./PageNotFound.css";
+
 import React from "react";
 
 export const PageNotFound = () => {
-  return <div>PageNotFound</div>;
+  return (
+    <div className="main-not-found">
+      <h1>PageNotFound</h1>
+    </div>
+  );
 };
