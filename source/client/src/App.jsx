@@ -13,6 +13,9 @@ export const App = () => {
   const theme = useSelector((state) => state.rootReducer.settings);
   const themeObj = {};
   const GlobalStyle = createGlobalStyle`
+  :root{
+    --active-theme-indicator : ${theme.state.theme[theme.state.activeTheme]}
+  }
   `;
   return (
     <ThemeProvider theme={themeObj}>
