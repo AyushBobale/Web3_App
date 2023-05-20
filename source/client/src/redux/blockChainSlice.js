@@ -6,6 +6,7 @@ const initialState = {
     address: null,
     ensName: null,
   },
+  updateDone: false,
 };
 
 const accountSlice = createSlice({
@@ -15,8 +16,11 @@ const accountSlice = createSlice({
     setInfo: (state, { payload }) => {
       state.info = payload;
     },
+    updateState: (state, { payload }) => {
+      state.updateDone = !state.updateDone;
+    },
   },
 });
 
-export const { setInfo } = accountSlice.actions;
+export const { setInfo, updateState } = accountSlice.actions;
 export default accountSlice.reducer;

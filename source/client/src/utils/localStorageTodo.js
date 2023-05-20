@@ -1,18 +1,31 @@
-import { uuid4 } from "uuid4";
+// import { uuid4 } from "uuid4";
+
+import { v4 as uuidv4 } from "uuid";
 
 // Function to retrieve todo lists from local storage
-function getTodoLists() {
+export function getTodoLists() {
   const todoLists = JSON.parse(localStorage.getItem("todoLists"));
   return todoLists || [];
 }
 
+export function getTodoListsPaginated(page, pageSize) {
+  const todoLists = JSON.parse(localStorage.getItem("todoLists"));
+  if (!todoLists?.length) {
+    return { total: 0, data: [], page: 0 };
+  }
+  let total = Math.ceil(todoLists.length / pageSize);
+  let startPos = page * pageSize || 0;
+  let endPos = startPos + pageSize;
+  return { total: total, data: todoLists?.slice(startPos, endPos), page: page };
+}
+
 // Function to save todo lists to local storage
-function saveTodoLists(todoLists) {
+export function saveTodoLists(todoLists) {
   localStorage.setItem("todoLists", JSON.stringify(todoLists));
 }
 
 // Function to add a new todo list
-function addTodoList(name) {
+export function addTodoList(name) {
   const todoList = {
     id: uuidv4(),
     name: name,
@@ -25,7 +38,7 @@ function addTodoList(name) {
 }
 
 // Function to add a new todo to a specific todo list
-function addTodoToList(listId, todoName, todoDesc) {
+export function addTodoToList(listId, todoName, todoDesc) {
   const todo = {
     id: uuidv4(),
     name: todoName,
@@ -42,7 +55,7 @@ function addTodoToList(listId, todoName, todoDesc) {
 }
 
 // Function to mark a todo as done or undone
-function toggleTodoStatus(listId, todoId) {
+export function toggleTodoStatus(listId, todoId) {
   const todoLists = getTodoLists();
   const todoList = todoLists.find((list) => list.id === listId);
   if (todoList) {
@@ -55,7 +68,7 @@ function toggleTodoStatus(listId, todoId) {
 }
 
 // Function to delete a todo from a specific todo list
-function deleteTodoFromList(listId, todoId) {
+export function deleteTodoFromList(listId, todoId) {
   const todoLists = getTodoLists();
   const todoList = todoLists.find((list) => list.id === listId);
   if (todoList) {

@@ -8,6 +8,7 @@
   top: calc(50% - 18px);
   height: 36px;
   width: 36px;
+  cursor: pointer;
 }
 
 .create-todo-list-cont input,

@@ -1,14 +1,23 @@
 import "./Section8.css";
 
+import React, { useEffect } from "react";
+
 import { CreateTodoList } from "../../components/CreateTodoList/CreateTodoList";
 import { EditTodo } from "../../components/EditTodo/EditTodo";
-import React from "react";
-import { TodoCard } from "../../components/TodoCard/TodoCard";
-import { TodoList } from "../../components/TodoList/TodoList";
+import { getTodoListsPaginated } from "../../utils/localStorageTodo";
 import { useSearchParams } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 export const Section8 = () => {
   const [searchParams, setSearchParams] = useSearchParams();
+  const updateDone = useSelector(
+    (state) => state.rootReducer.account.updateDone
+  );
+
+  useEffect(() => {
+    console.log(getTodoListsPaginated(0, 3));
+  }, [updateDone]);
+
   return (
     <div className="section-content">
       <div
@@ -18,12 +27,6 @@ export const Section8 = () => {
             : "todo-list-cont"
         }
       >
-        <div className="todo-cont">
-          <TodoList />
-        </div>
-        <div className="todo-cont">
-          <TodoList />
-        </div>
         <div className="todo-cont">
           <CreateTodoList />
         </div>

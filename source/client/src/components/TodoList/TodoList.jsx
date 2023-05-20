@@ -4,6 +4,7 @@ import "../TodoCard/TodoCard.css";
 import React, { useState } from "react";
 
 import { TodoCard } from "../TodoCard/TodoCard";
+import add from "../../assets/images/add.svg";
 import edit from "../../assets/images/edit.svg";
 import todoIcon from "../../assets/images/todoIcon.svg";
 
@@ -23,7 +24,7 @@ export const TodoList = ({ id }) => {
             <img src={todoIcon} alt="" />
             <input type="text" placeholder="Add Todo" />
           </div>
-          <img src={edit} alt="" />
+          <img src={add} alt="" />
         </div>
         <textarea
           value={value}

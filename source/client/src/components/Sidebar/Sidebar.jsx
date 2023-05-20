@@ -39,8 +39,6 @@ export const Sidebar = () => {
     connector: new InjectedConnector(),
   });
 
-  console.log(data);
-
   return (
     <div className={sideBar ? "sidebar open" : "sidebar"}>
       <div className={sideBar ? "nav-cont open" : "nav-cont"}>
