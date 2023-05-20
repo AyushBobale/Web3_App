@@ -1,7 +1,7 @@
 import "./Sidebar.css";
 
 import { toggleSidebar, toggleTheme } from "../../redux/siteSettingSlice";
-import { useAccount, useEnsName } from "wagmi";
+import { useAccount, useBalance, useEnsName } from "wagmi";
 import { useDispatch, useSelector } from "react-redux";
 
 import { NavLink } from "react-router-dom";
@@ -30,6 +30,12 @@ export const Sidebar = () => {
   };
   const { address, isConnected } = useAccount();
   const { data: ensName } = useEnsName({ address });
+  const { data, isError, isLoading } = useBalance({
+    address: address,
+    watch: true,
+  });
+
+  console.log(data);
 
   return (
     <div className={sideBar ? "sidebar open" : "sidebar"}>
@@ -68,8 +74,11 @@ export const Sidebar = () => {
         <div className="bottom">
           <div className={sideBar ? "sidebar-profile open" : "sidebar-profile"}>
             <button className="btn-grey">
-              <img src={profile} alt="" />
-              {sideBar && "$0.09"}
+              <div className="circle-bg-bottom">
+                {isConnected ? `${data.formatted}` : ``}
+              </div>
+              {sideBar &&
+                (isConnected ? `${data.formatted} ${data.symbol}` : "loading")}
             </button>
             <button className="btn-light">{sideBar ? "Buy $XYZ" : "$"}</button>
           </div>

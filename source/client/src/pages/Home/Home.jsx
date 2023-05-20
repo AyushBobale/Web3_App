@@ -20,7 +20,7 @@ export const Home = () => {
   }, [isConnected, ensName, address]);
   return (
     <div className="home-root">
-      Home
+      Home <p>[* Note MetaMask extension is required for the following page]</p>
       <button
         disabled={isConnected}
         className="btn-light"
