@@ -2,24 +2,28 @@ import "./Section8.css";
 
 import React, { useEffect, useState } from "react";
 import { createSearchParams, useSearchParams } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
 
 import { CreateTodoList } from "../../components/CreateTodoList/CreateTodoList";
 import { EditTodo } from "../../components/EditTodo/EditTodo";
 import { PaginationNavigator } from "../../components/PaginationNavigator/PaginationNavigator";
 import { TodoList } from "../../components/TodoList/TodoList";
 import { getTodoListsPaginated } from "../../utils/localStorageTodo";
-import { useSelector } from "react-redux";
+import { setTodoLists } from "../../redux/blockChainSlice";
 
 export const Section8 = () => {
   const [searchParams, setSearchParams] = useSearchParams();
+  const dispatch = useDispatch();
   const updateDone = useSelector(
     (state) => state.rootReducer.account.updateDone
   );
-  const [todoLists, setTodoLists] = useState({
-    total: 0,
-    data: [],
-    page: 0,
-  });
+  // const [todoLists, setTodoLists] = useState({
+  //   total: 1,
+  //   data: [],
+  //   page: 0,
+  // });
+
+  const todoLists = useSelector((state) => state.rootReducer.account.todoLists);
 
   const setPage = (page) => {
     let params = Object.fromEntries(searchParams);
@@ -28,7 +32,9 @@ export const Section8 = () => {
   };
 
   useEffect(() => {
-    setTodoLists(getTodoListsPaginated(searchParams.get("page") || 0, 3));
+    dispatch(
+      setTodoLists(getTodoListsPaginated(searchParams.get("page") || 0, 3))
+    );
     console.log(todoLists);
   }, [updateDone, searchParams.get("page")]);
 

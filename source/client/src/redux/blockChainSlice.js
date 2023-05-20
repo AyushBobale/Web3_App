@@ -6,6 +6,11 @@ const initialState = {
     address: null,
     ensName: null,
   },
+  todoLists: {
+    total: 1,
+    data: [],
+    page: 0,
+  },
   updateDone: false,
 };
 
@@ -19,8 +24,11 @@ const accountSlice = createSlice({
     updateState: (state, { payload }) => {
       state.updateDone = !state.updateDone;
     },
+    setTodoLists: (state, { payload }) => {
+      state.todoLists = payload;
+    },
   },
 });
 
-export const { setInfo, updateState } = accountSlice.actions;
+export const { setInfo, updateState, setTodoLists } = accountSlice.actions;
 export default accountSlice.reducer;
