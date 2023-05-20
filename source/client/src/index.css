@@ -89,6 +89,9 @@ p {
   font-weight: 600;
   font-size: 14px;
 }
+.btn-light:disabled {
+  opacity: 0.5;
+}
 
 .btn-dark {
   background: #3772ff;
@@ -98,4 +101,7 @@ p {
   padding: 6px 12px;
   font-weight: 600;
   font-size: 16px;
+}
+.btn-dark:disabled {
+  opacity: 0.5;
 }

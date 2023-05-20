@@ -33,6 +33,16 @@
   flex-direction: column;
   gap: 1rem;
 }
+.circle-bg {
+  border-radius: 50%;
+  background-color: var(--primary-btn);
+  height: 26px;
+  width: 26px;
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
 .sidebar-bottom.open,
 .sidebar-bottom {

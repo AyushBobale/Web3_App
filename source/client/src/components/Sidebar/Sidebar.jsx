@@ -1,6 +1,7 @@
 import "./Sidebar.css";
 
 import { toggleSidebar, toggleTheme } from "../../redux/siteSettingSlice";
+import { useAccount, useEnsName } from "wagmi";
 import { useDispatch, useSelector } from "react-redux";
 
 import { NavLink } from "react-router-dom";
@@ -27,14 +28,22 @@ export const Sidebar = () => {
   const toggleThm = () => {
     dispath(toggleTheme());
   };
+  const { address, isConnected } = useAccount();
+  const { data: ensName } = useEnsName({ address });
+
   return (
     <div className={sideBar ? "sidebar open" : "sidebar"}>
       <div className={sideBar ? "nav-cont open" : "nav-cont"}>
         <div className="top">
           <div className={sideBar ? "sidebar-profile open" : "sidebar-profile"}>
             <div className="profile-cont">
-              <img src={profile} alt="profile" />
-              <h1>Name</h1>
+              {/* <img src={profile} alt="profile" /> */}
+              <div className="circle-bg">
+                {isConnected ? `${address.toString()?.slice(-10, -9)}` : ``}
+              </div>
+              <h1>
+                {isConnected ? `${address.toString()?.slice(-10)}` : `Login`}
+              </h1>
             </div>
             <img src={closing} alt="close" onClick={toggle} />
           </div>
