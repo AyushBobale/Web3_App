@@ -1,8 +1,10 @@
 import "./Section8.css";
 
+import { CreateTodoList } from "../../components/CreateTodoList/CreateTodoList";
 import { EditTodo } from "../../components/EditTodo/EditTodo";
 import React from "react";
 import { TodoCard } from "../../components/TodoCard/TodoCard";
+import { TodoList } from "../../components/TodoList/TodoList";
 import { useSearchParams } from "react-router-dom";
 
 export const Section8 = () => {
@@ -17,20 +19,13 @@ export const Section8 = () => {
         }
       >
         <div className="todo-cont">
-          <TodoCard />
-          <TodoCard />
-          <TodoCard />
+          <TodoList />
         </div>
         <div className="todo-cont">
-          <TodoCard />
-          <TodoCard />
-          <TodoCard />
-          <TodoCard />
-          <TodoCard />
+          <TodoList />
         </div>
         <div className="todo-cont">
-          <TodoCard />
-          <TodoCard />
+          <CreateTodoList />
         </div>
       </div>
       <div

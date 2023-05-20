@@ -1,4 +1,5 @@
 .header-cont {
+  z-index: 20;
   height: var(--header-height);
   position: fixed;
   top: 0;

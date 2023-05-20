@@ -45,4 +45,6 @@
   text-align: left;
   border-radius: 12px;
   min-height: 180px;
+  resize: none;
+  overflow: hidden;
 }

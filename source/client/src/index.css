@@ -59,6 +59,12 @@ p {
   color: var(--primary-grey);
 }
 
+input,
+textarea {
+  outline: none;
+  border: none;
+}
+
 .main-content {
   margin-top: calc(var(--header-height));
   width: calc(100% - var(--sidebar-close-width));
