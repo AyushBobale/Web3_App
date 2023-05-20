@@ -2,7 +2,7 @@
   width: 100%;
   height: 100%;
   padding: 1rem;
-  border-left: #242731 solid 3px;
+  /* border-left: #242731 solid 3px; */
 }
 
 .edit-header {
@@ -18,7 +18,7 @@
 .edit-body input,
 .edit-body input:focus {
   padding: 16px;
-  width: 100%;
+  max-width: 100%;
   background: #242731;
   border: none;
   color: #a6a6a6;
@@ -33,7 +33,7 @@
 }
 .edit-body textarea {
   padding: 16px;
-  width: 100%;
+  max-width: 100%;
   background: #242731;
   border: none;
   color: #a6a6a6;
@@ -45,6 +45,7 @@
   text-align: left;
   border-radius: 12px;
   min-height: 180px;
-  resize: none;
+  /* resize: none; */
+  max-width: 100%;
   overflow: hidden;
 }

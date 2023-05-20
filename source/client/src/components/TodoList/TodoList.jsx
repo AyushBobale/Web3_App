@@ -37,18 +37,18 @@ export const TodoList = ({ todolist }) => {
   return (
     <div className="todo-list-indv-cont">
       <div className="todo-list-name">{todolist?.name}</div>
-      <div className="todo-card">
-        <div className="todo-header-root">
-          <div className="todo-header">
-            <img src={todoIcon} alt="" />
-            <input
-              type="text"
-              value={todoName}
-              onChange={handleNameChange}
-              placeholder="Add Todo"
-            />
-          </div>
-          <img src={add} onClick={addTodo} alt="" />
+      <div className="todo-card-create">
+        {/* <div className="todo-header-root"> */}
+        <div className="todo-header-create">
+          <img src={todoIcon} alt="" />
+          <input
+            type="text"
+            value={todoName}
+            onChange={handleNameChange}
+            placeholder="Add Todo"
+          />
+          <img className="add-img" src={add} onClick={addTodo} alt="" />
+          {/* </div> */}
         </div>
         <textarea
           value={value}

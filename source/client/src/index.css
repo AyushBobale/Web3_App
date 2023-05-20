@@ -85,6 +85,10 @@ textarea {
   justify-content: space-between;
 }
 
+.section-root {
+  height: 100%;
+}
+
 .btn-light {
   background: #a3e3ff;
   color: #3772ff;

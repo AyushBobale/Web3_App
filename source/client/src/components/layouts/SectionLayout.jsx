@@ -14,7 +14,7 @@ export const SectionLayout = () => {
     watch: true,
   });
   return (
-    <div>
+    <>
       <div className="section-header">
         <h2>Section</h2>
         <div className="section-end">
@@ -28,6 +28,6 @@ export const SectionLayout = () => {
       <div className="section-root">
         <Outlet />
       </div>
-    </div>
+    </>
   );
 };

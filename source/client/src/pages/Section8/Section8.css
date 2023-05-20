@@ -15,7 +15,8 @@
 .todo-list-cont,
 .todo-list-cont.open {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  /* grid-template-columns: 1fr 1fr 1fr; */
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: 1rem;
 }
 
@@ -35,11 +36,13 @@
 
 .todo-edit-container.open {
   width: 25%;
-  display: inline;
+  /* display: inline; */
+  border-left: var(--dark-grey) solid 3px;
 }
 .todo-edit-container {
   width: 0%;
-  display: none;
+  /* display: none; */
+  border: none;
 }
 
 .todo-cont {
