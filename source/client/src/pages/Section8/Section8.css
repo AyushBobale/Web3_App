@@ -39,3 +39,10 @@
   flex-direction: column;
   gap: 1rem;
 }
+
+.pagi-outer-cont {
+  display: flex;
+  gap: 1rem;
+  flex-direction: column;
+  padding: 1rem;
+}

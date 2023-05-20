@@ -1,0 +1,28 @@
+.pagination-root {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  justify-content: center;
+}
+
+.pagination-root button {
+  border: none;
+  font-weight: 600;
+  outline: none;
+  height: 24px;
+  width: 24px;
+  background: #3772ff;
+  color: #fff;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+#active {
+  background: #a3e3ff;
+  color: #3772ff;
+}
+
+#inactive {
+  background: #3772ff;
+  color: #fff;
+}
