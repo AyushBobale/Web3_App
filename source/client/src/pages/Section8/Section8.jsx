@@ -22,7 +22,7 @@ export const Section8 = () => {
   //   data: [],
   //   page: 0,
   // });
-
+  const TODO_LISTS_PER_PAGE = 2;
   const todoLists = useSelector((state) => state.rootReducer.account.todoLists);
 
   const setPage = (page) => {
@@ -33,7 +33,12 @@ export const Section8 = () => {
 
   useEffect(() => {
     dispatch(
-      setTodoLists(getTodoListsPaginated(searchParams.get("page") || 0, 3))
+      setTodoLists(
+        getTodoListsPaginated(
+          searchParams.get("page") || 0,
+          TODO_LISTS_PER_PAGE
+        )
+      )
     );
     console.log(todoLists);
   }, [updateDone, searchParams.get("page")]);
@@ -61,7 +66,7 @@ export const Section8 = () => {
               </div>
             );
           })}
-          {todoLists?.data?.length < 3 && (
+          {todoLists?.data?.length < TODO_LISTS_PER_PAGE && (
             <div className="todo-cont">
               <CreateTodoList />
             </div>

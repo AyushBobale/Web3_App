@@ -30,39 +30,39 @@ export const PaginationNavigator = ({
   return (
     <div className="pagination-root">
       <button className="prevpage">{"<"}</button>
-      <Swiper
-        width={200}
-        slidesPerView={1}
-        spaceBetween={20}
-        loop={false}
-        pagination={{
-          clickable: true,
-        }}
-        navigation={{
-          prevEl: ".prevpage",
-          nextEl: ".nextpage",
-        }}
-        modules={[Navigation]}
-        className="mySwiper "
-      >
-        {paginationSlides.map((data) => {
-          return (
-            <SwiperSlide key={data[0]}>
-              {data.map((pg) => (
-                <button
-                  key={pg}
-                  id={pg == activePage ? "active" : "inactive"}
-                  onClick={() => {
-                    setPage(pg);
-                  }}
-                >
-                  {pg + 1}
-                </button>
-              ))}
-            </SwiperSlide>
-          );
-        })}
-      </Swiper>
+      <div className="swiper-main-cont">
+        <Swiper
+          slidesPerView={1}
+          pagination={{
+            clickable: true,
+          }}
+          navigation={{
+            prevEl: ".prevpage",
+            nextEl: ".nextpage",
+          }}
+          modules={[Navigation]}
+        >
+          {paginationSlides.map((data) => {
+            return (
+              <SwiperSlide key={data[0]}>
+                <div className="my-swiper-slide">
+                  {data.map((pg) => (
+                    <button
+                      key={pg}
+                      id={pg == activePage ? "active" : "inactive"}
+                      onClick={() => {
+                        setPage(pg);
+                      }}
+                    >
+                      {pg + 1}
+                    </button>
+                  ))}
+                </div>
+              </SwiperSlide>
+            );
+          })}
+        </Swiper>
+      </div>
       <button className="nextpage">{">"}</button>
     </div>
   );

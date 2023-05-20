@@ -6,6 +6,17 @@
   width: 100%;
 }
 
+.swiper-main-cont {
+  width: 200px;
+}
+
+.my-swiper-slide {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  justify-content: center;
+}
+
 .pagination-root button {
   border: none;
   font-weight: 600;
