@@ -6,9 +6,16 @@ import React, { useEffect } from "react";
 import { Swiper, SwiperSlide, useSwiper } from "swiper/react";
 import { useAccount, useConnect, useDisconnect, useEnsName } from "wagmi";
 
+import { ImageOnHover } from "../../components/ImageOnHover/ImageOnHover";
 import { InjectedConnector } from "wagmi/connectors/injected";
+import { Link } from "react-router-dom";
 import { Navigation } from "swiper";
+import deployed from "../../assets/images/deployed.PNG";
+import ganache from "../../assets/images/ganache.PNG";
+import localStore from "../../assets/images/local_store.PNG";
+import metaM from "../../assets/images/meta_m_conn.png";
 import { setInfo } from "../../redux/blockChainSlice";
+import themeSupp from "../../assets/images/theme.PNG";
 import { useDispatch } from "react-redux";
 
 export const Home = () => {
@@ -43,12 +50,28 @@ export const Home = () => {
           {isConnected ? "Disconnect" : "Disconnected"}
         </button>
       </div>
-      <h3>What is completed ?</h3>
-      <p>Connecting Meta mask account</p>
-      <p>Local storage based functionalty</p>
+      <h1>
+        <Link to="/section/8">You will find implented Todo in Section 8</Link>
+      </h1>
+      <p>Other pages are implemented just to demonstrate nested routing</p>
+      <br />
+      <h3>What is completed ? [ Hover over items to see more ]</h3>
+      <ImageOnHover text={<p>Connecting Meta mask account</p>} image={metaM} />
+      <ImageOnHover
+        text={<p>Local storage based functionalty</p>}
+        image={localStore}
+      />
       <p>UI with some added features</p>
-      <p>Support of themes</p>
-      <p>Deployed smart contract on Ganache</p>
+      <ImageOnHover text={<p>Support for themes</p>} image={themeSupp} />
+      <ImageOnHover
+        text={<p>Deployed smart contract on Ganache</p>}
+        image={ganache}
+      />
+      <ImageOnHover text={<p>Contracts Executed outside</p>} image={deployed} />
+      <br />
+      <h3>What is to be done ?</h3>
+      <p>Wagmi to run contracts</p>
+      <br />
     </div>
   );
 };
