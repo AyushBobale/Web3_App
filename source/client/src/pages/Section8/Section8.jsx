@@ -31,10 +31,11 @@ export const Section8 = () => {
   const { data, isError, isLoading } = useContractRead(
     {
       addressOrName: CONTRACT.address,
-      contractInterface: CONTRACT.contractABI,
+      contractInterface: CONTRACT.todoListABI,
     },
     CONTRACT.contracts.read.getUserIds
   );
+
   // const { data, isError, isLoading } = useContractRead(
   //   {
   //     addressOrName: "0xecb504d39723b0be0e3a9aa33d646642d1051ee1",

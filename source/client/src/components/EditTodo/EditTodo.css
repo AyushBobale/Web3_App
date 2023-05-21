@@ -24,7 +24,7 @@
 .edit-body input:focus {
   padding: 16px;
   max-width: 100%;
-  background: #242731;
+  background: var(--todo-card-bg);
   border: none;
   color: #a6a6a6;
   font-family: "Poppins";
@@ -39,7 +39,7 @@
 .edit-body textarea {
   padding: 16px;
   max-width: 100%;
-  background: #242731;
+  background: var(--todo-card-bg);
   border: none;
   color: #a6a6a6;
   font-family: "Inter";

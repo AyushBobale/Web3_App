@@ -4,3 +4,8 @@
   gap: 1rem;
   flex-direction: column;
 }
+
+.connection-btn-wrap {
+  display: flex;
+  gap: 1rem;
+}

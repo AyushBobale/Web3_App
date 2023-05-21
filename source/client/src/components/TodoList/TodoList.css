@@ -8,7 +8,7 @@
 .todo-card-create input,
 .todo-card-create textarea {
   padding: 8px;
-  background: #191b20;
+  background: var(--todo-card-bg);
   font-family: "Poppins";
   font-size: 18px;
   font-weight: 700;
@@ -54,7 +54,7 @@
 .todo-list-name {
   padding: 16px;
   width: 100%;
-  background: #242731;
+  background: var(--list-bg);
   border: none;
   color: #fff;
   font-family: "Poppins";

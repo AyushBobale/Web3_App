@@ -1,12 +1,12 @@
 import "./Sidebar.css";
 
+import React, { useEffect } from "react";
 import { toggleSidebar, toggleTheme } from "../../redux/siteSettingSlice";
 import { useAccount, useBalance, useConnect, useEnsName } from "wagmi";
 import { useDispatch, useSelector } from "react-redux";
 
 import { InjectedConnector } from "wagmi/connectors/injected";
 import { NavLink } from "react-router-dom";
-import React from "react";
 import closing from "../../assets/images/closingIcon.svg";
 import home from "../../assets/images/home.svg";
 import language from "../../assets/images/Language.svg";

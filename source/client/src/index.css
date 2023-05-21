@@ -1,6 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap");
 
-:root {
+/* :root {
   --primary-bg: #000000;
   --primary-color: #ffffff;
   --primary-grey: #6e6e6e;
@@ -9,7 +9,7 @@
   --header-height: 2rem;
   --sidebar-width: 300px;
   --sidebar-close-width: 70px;
-}
+} */
 
 * {
   margin: 0;
@@ -113,4 +113,12 @@ textarea {
 }
 .btn-dark:disabled {
   opacity: 0.5;
+}
+
+.filter-dark {
+}
+
+.filter-white {
+  filter: invert(48%) sepia(79%) saturate(2476%) hue-rotate(86deg)
+    brightness(118%) contrast(119%);
 }

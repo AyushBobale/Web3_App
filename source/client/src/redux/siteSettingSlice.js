@@ -13,6 +13,26 @@ const initialState = {
       light: "#fff",
       dark: "#3772FF",
     },
+    themes: {
+      dark: {
+        indicator: "#3772FF",
+        primaryBg: "#000000",
+        primaryColor: "#ffffff",
+        primaryGrey: "#6e6e6e",
+        darkGrey: "#242731",
+        todoCardBg: "#191b20",
+        listBg: "#242731",
+      },
+      light: {
+        indicator: "#fff",
+        primaryBg: "#ffffff",
+        primaryColor: "#000000",
+        primaryGrey: "#242731",
+        darkGrey: "#6e6e6e",
+        todoCardBg: "#a3e3ff",
+        listBg: "#3772ff",
+      },
+    },
   },
 };
 

@@ -15,7 +15,7 @@
 .create-todo-list-cont input:focus {
   padding: 16px;
   width: 100%;
-  background: #242731;
+  background: var(--list-bg);
   border: none;
   color: #a6a6a6;
   font-family: "Poppins";

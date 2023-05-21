@@ -1,5 +1,5 @@
 export const CONTRACT = {
-  address: "0x300a36088D3Cb45303C6B304D21F086d644CBb45",
+  address: "0xB1c8F617b626f634b1d37d2442eA54Af5b870238",
   contracts: {
     read: { getUserIds: "getUserIds" },
   },

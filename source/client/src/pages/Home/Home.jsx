@@ -25,25 +25,29 @@ export const Home = () => {
   }, [isConnected, ensName, address]);
   return (
     <div className="home-root">
-      Home <p>[* Note MetaMask extension is required for the following page]</p>
-      <button
-        disabled={isConnected}
-        className="btn-light"
-        onClick={() => connect()}
-      >
-        {!isConnected ? "Connect" : "Connected"}
-      </button>
-      <button
-        disabled={!isConnected}
-        className="btn-dark"
-        onClick={() => disconnect()}
-      >
-        {isConnected ? "Disconnect" : "Disconnected"}
-      </button>
-      <h1>Heading 1</h1>
-      <h2>Heading 2</h2>
-      <h2>Heading 3</h2>
-      <p>Paragraph</p>
+      <h1>Home</h1>{" "}
+      <p>[* Note MetaMask extension is required for the following page]</p>
+      <div className="connection-btn-wrap">
+        <button
+          disabled={isConnected}
+          className="btn-light"
+          onClick={() => connect()}
+        >
+          {!isConnected ? "Connect" : "Connected"}
+        </button>
+        <button
+          disabled={!isConnected}
+          className="btn-dark"
+          onClick={() => disconnect()}
+        >
+          {isConnected ? "Disconnect" : "Disconnected"}
+        </button>
+      </div>
+      <h3>What is completed ?</h3>
+      <p>Connecting Meta mask account</p>
+      <p>Local storage based functionalty</p>
+      <p>UI with some added features</p>
+      <p>Deployed smart contract on Ganache</p>
     </div>
   );
 };

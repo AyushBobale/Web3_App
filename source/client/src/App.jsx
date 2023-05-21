@@ -22,12 +22,44 @@ const config = createConfig({
   webSocketPublicClient,
 });
 
+// --active-theme-indicator : ${
+//   theme.state.themes?.[theme.state.activeTheme]?.primaryBg
+// };
+// --primary-bg: ${
+//   theme.state.themes?.[theme.state.activeTheme]?.primaryColor
+// };
+// --primary-color: ${
+//   theme.state.themes?.[theme.state.activeTheme]?.indicator
+// };
+// --primary-grey: ${
+//   theme.state.themes?.[theme.state.activeTheme]?.primaryGrey
+// };
+// --dark-grey: ${theme.state.themes?.[theme.state.activeTheme]?.darkGrey};
+
 export const App = () => {
   const theme = useSelector((state) => state.rootReducer.settings);
   const themeObj = {};
   const GlobalStyle = createGlobalStyle`
   :root{
-    --active-theme-indicator : ${theme.state.theme[theme.state.activeTheme]}
+    --active-theme-indicator : ${
+      theme.state.themes?.[theme.state.activeTheme]?.indicator
+    };
+    --primary-bg: ${theme.state.themes?.[theme.state.activeTheme]?.primaryBg};
+    --primary-color: ${
+      theme.state.themes?.[theme.state.activeTheme]?.primaryColor
+    };
+    --primary-grey: ${
+      theme.state.themes?.[theme.state.activeTheme]?.primaryGrey
+    };
+    --dark-grey: ${theme.state.themes?.[theme.state.activeTheme]?.darkGrey};
+    --todo-card-bg: ${
+      theme.state.themes?.[theme.state.activeTheme]?.todoCardBg
+    };
+    --list-bg: ${theme.state.themes?.[theme.state.activeTheme]?.listBg};
+    --primary-btn: #3772ff;
+    --header-height: 2rem;
+    --sidebar-width: 300px;
+    --sidebar-close-width: 70px;
   }
   `;
   return (
