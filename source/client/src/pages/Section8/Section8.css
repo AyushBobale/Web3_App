@@ -57,11 +57,13 @@
   padding: 0 !important;
 }
 
-.todo-edit-container.open .edit-header {
+.todo-edit-container.open .edit-header,
+.todo-edit-container.open .btn-dark {
   display: block;
 }
 
-.todo-edit-container .edit-header {
+.todo-edit-container .edit-header,
+.todo-edit-container .btn-dark {
   display: none;
 }
 

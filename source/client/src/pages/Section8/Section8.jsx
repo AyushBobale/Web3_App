@@ -140,7 +140,7 @@ export const Section8 = () => {
   //   },
   //   "getHunger"
   // );
-  console.log(data, isError, isLoading);
+  // console.log(data, isError, isLoading);
 
   useEffect(() => {
     dispatch(
@@ -151,7 +151,7 @@ export const Section8 = () => {
         )
       )
     );
-    console.log(todoLists);
+    // console.log(todoLists);
   }, [updateDone, searchParams.get("page")]);
 
   return (

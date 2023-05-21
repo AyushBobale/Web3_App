@@ -6,11 +6,12 @@ import React from "react";
 import edit from "../../assets/images/edit.svg";
 import todoIcon from "../../assets/images/todoIcon.svg";
 
-export const TodoCard = ({ todo }) => {
+export const TodoCard = ({ todo, todoListId }) => {
   const [searchParams, setSearchParams] = useSearchParams();
 
   const openEdit = () => {
     let params = Object.fromEntries(searchParams);
+    params["list-id"] = todoListId;
     params["edit-todo"] = todo?.id || "test";
     setSearchParams(createSearchParams(params));
   };

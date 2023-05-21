@@ -95,6 +95,48 @@ export function addTodoToList(listId, todoName, todoDesc) {
 }
 
 //---------------------------------------------
+function editTodoList_LocalStorgae(listId, todoId, name, desc) {
+  const todo = {
+    id: todoId,
+    name: name,
+    desc: desc,
+    isDone: false,
+  };
+  const todoLists = getTodoLists();
+  const todoList = todoLists.find((list) => list.id === listId);
+  if (todoList) {
+    let idx = todoList.todos.findIndex((item) => item.id === todoId);
+    todoList.todos[idx] = todo;
+    let listIdx = todoLists.findIndex((list) => list.id === listId);
+    todoLists[listIdx] = todoList;
+    saveTodoLists(todoLists);
+  }
+}
+
+export function editTodoInList(listId, todoId, name, desc) {
+  if (USE_LOCAL) {
+    editTodoList_LocalStorgae(listId, todoId, name, desc);
+  }
+}
+
+//---------------------------------------------
+
+function getTodoFromList_LocalStorage(listId, todoId) {
+  const todoLists = getTodoLists();
+  const todoList = todoLists.find((list) => list.id === listId);
+  if (todoList) {
+    let item = todoList.todos.find((item) => item.id === todoId);
+    return item;
+  }
+  return {};
+}
+
+export function getTodoFromList(listId, todoId) {
+  if (USE_LOCAL) {
+    return getTodoFromList_LocalStorage(listId, todoId);
+  }
+}
+//---------------------------------------------
 // Not used
 //------------------------------------------
 

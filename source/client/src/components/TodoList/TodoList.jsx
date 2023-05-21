@@ -57,7 +57,7 @@ export const TodoList = ({ todolist }) => {
         ></textarea>
       </div>
       {todolist?.todos?.map((elm) => (
-        <TodoCard todo={elm} />
+        <TodoCard todo={elm} todoListId={todolist?.id} />
       ))}
     </div>
   );
