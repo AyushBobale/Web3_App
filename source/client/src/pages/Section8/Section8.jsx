@@ -2,7 +2,9 @@ import "./Section8.css";
 
 import React, { useEffect, useState } from "react";
 import { createSearchParams, useSearchParams } from "react-router-dom";
+import { setTodoLists, setTodoListsAll } from "../../redux/blockChainSlice";
 import {
+  useAccount,
   useBlockNumber,
   useContractRead,
   useContractWrite,
@@ -17,11 +19,11 @@ import { EditTodo } from "../../components/EditTodo/EditTodo";
 import { PaginationNavigator } from "../../components/PaginationNavigator/PaginationNavigator";
 import { TodoList } from "../../components/TodoList/TodoList";
 import { getTodoListsPaginated } from "../../utils/todoService";
-import { setTodoLists } from "../../redux/blockChainSlice";
 
 export const Section8 = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const dispatch = useDispatch();
+  const { address, isConnected } = useAccount();
   const updateDone = useSelector(
     (state) => state.rootReducer.account.updateDone
   );
@@ -34,45 +36,19 @@ export const Section8 = () => {
     setSearchParams(createSearchParams(params));
   };
 
-  // const { data, isError, isLoading } = useContractRead(
-  //   {
-  //     addressOrName: CONTRACT.address,
-  //     contractInterface: CONTRACT.todoListABI,
-  //   },
-  //   CONTRACT.contracts.read.getUserIds
-  // );
-  // const { data, isError, isLoading } = useBlockNumber();
-  // const { data, isError, isLoading } = useContractRead({
-  //   address: CONTRACT.address,
-  //   abi: CONTRACT.todoListABI,
-  //   functionName: CONTRACT.contracts.read.getUserIds,
-  //   // args: ["0xDD9eaE13D20284248dBbdBF750369aBbCD71465b"],
-  // });
-
-  // const { data, isLoading, isSuccess, sendTransaction } = useSendTransaction({
-  //   to: "0x19226CB6AB87AA62DAd089086426071244272463",
-  //   value: (1 * 1e18).toString(),
-  // });
-
-  const { data, isLoading, isSuccess, write } = useContractWrite({
+  const { dataTodos, isErrorTodos, isLoadingTodos } = useContractRead({
     address: CONTRACT.address,
     abi: CONTRACT.todoListABI,
-    functionName: CONTRACT.contracts.write.addList,
-    args: ["List name"],
-    onError(error) {
-      console.log("Error", error);
-    },
+    functionName: CONTRACT.contracts.read.todoCnt,
+    // args: ["0xDD9eaE13D20284248dBbdBF750369aBbCD71465b"],
   });
 
+  console.log(dataTodos, address);
   useEffect(() => {
-    console.log(data, isLoading);
-  }, [data, isLoading]);
-
-  const clickHandler = () => {
-    console.log("Clicked");
-    // sendTransaction();
-    write();
-  };
+    if (dataTodos) {
+      dispatch(setTodoListsAll({ todo: dataTodos }));
+    }
+  }, [isConnected]);
 
   useEffect(() => {
     dispatch(
@@ -94,9 +70,9 @@ export const Section8 = () => {
         activePage={searchParams.get("page") || 0}
       />
       <div className="section-content">
-        <button className="btn-light" onClick={() => clickHandler()}>
-          Run contract
-        </button>
+        {/* <button className="btn-light" onClick={() => clickHandler()}> */}
+        {/* Run contract */}
+        {/* </button> */}
         <div
           className={
             searchParams.get("edit-todo")
