@@ -15,11 +15,12 @@ import section1 from "../../assets/images/section1.svg";
 import section2 from "../../assets/images/section2.svg";
 import section8 from "../../assets/images/section8.svg";
 import section8Active from "../../assets/images/section8Active.svg";
-import theme from "../../assets/images/theme.svg";
+import themeIcon from "../../assets/images/theme.svg";
 
 export const Sidebar = () => {
   const dispath = useDispatch();
-
+  const theme = useSelector((state) => state.rootReducer.settings);
+  const filter = theme.state.themes?.[theme.state.activeTheme]?.svgFilter;
   const sideBar = useSelector(
     (state) => state.rootReducer.settings.state.sideBar
   );
@@ -53,7 +54,12 @@ export const Sidebar = () => {
                 {isConnected ? `${address.toString()?.slice(-10)}` : `Login`}
               </h1>
             </div>
-            <img src={closing} alt="close" onClick={toggle} />
+            <img
+              className={filter}
+              src={closing}
+              alt="close"
+              onClick={toggle}
+            />
           </div>
           <NavLink to="/home">
             <img src={home} alt="home" />
@@ -89,7 +95,7 @@ export const Sidebar = () => {
           <div className={sideBar ? "sidebar-bottom open" : "sidebar-bottom"}>
             <img src={language} alt="" />
             <button className="btn-grey" onClick={toggleThm}>
-              <img src={theme} alt="" />
+              <img src={themeIcon} alt="" />
               <div className="theme-circle"></div>
             </button>
           </div>

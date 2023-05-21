@@ -22,20 +22,6 @@ const config = createConfig({
   webSocketPublicClient,
 });
 
-// --active-theme-indicator : ${
-//   theme.state.themes?.[theme.state.activeTheme]?.primaryBg
-// };
-// --primary-bg: ${
-//   theme.state.themes?.[theme.state.activeTheme]?.primaryColor
-// };
-// --primary-color: ${
-//   theme.state.themes?.[theme.state.activeTheme]?.indicator
-// };
-// --primary-grey: ${
-//   theme.state.themes?.[theme.state.activeTheme]?.primaryGrey
-// };
-// --dark-grey: ${theme.state.themes?.[theme.state.activeTheme]?.darkGrey};
-
 export const App = () => {
   const theme = useSelector((state) => state.rootReducer.settings);
   const themeObj = {};

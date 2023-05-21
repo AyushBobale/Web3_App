@@ -47,6 +47,7 @@ export const Home = () => {
       <p>Connecting Meta mask account</p>
       <p>Local storage based functionalty</p>
       <p>UI with some added features</p>
+      <p>Support of themes</p>
       <p>Deployed smart contract on Ganache</p>
     </div>
   );

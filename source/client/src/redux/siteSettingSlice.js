@@ -15,6 +15,7 @@ const initialState = {
     },
     themes: {
       dark: {
+        svgFilter: "filter-dark",
         indicator: "#3772FF",
         primaryBg: "#000000",
         primaryColor: "#ffffff",
@@ -24,6 +25,7 @@ const initialState = {
         listBg: "#242731",
       },
       light: {
+        svgFilter: "filter-white",
         indicator: "#fff",
         primaryBg: "#ffffff",
         primaryColor: "#000000",

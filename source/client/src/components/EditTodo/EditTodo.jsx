@@ -7,12 +7,14 @@ import {
   editTodoInList,
   getTodoFromList,
 } from "../../utils/todoService";
+import { useDispatch, useSelector } from "react-redux";
 
 import arrowLeft from "../../assets/images/arrow-left.svg";
 import { updateState } from "../../redux/blockChainSlice";
-import { useDispatch } from "react-redux";
 
 export const EditTodo = () => {
+  const theme = useSelector((state) => state.rootReducer.settings);
+  const filter = theme.state.themes?.[theme.state.activeTheme]?.svgFilter;
   const [searchParams, setSearchParams] = useSearchParams();
   const dispatch = useDispatch();
   const [value, setValue] = useState("");
@@ -74,7 +76,8 @@ export const EditTodo = () => {
   return (
     <div className="edit-cont">
       <div className="edit-header">
-        <img onClick={closeEdit} src={arrowLeft} alt="" /> Edit Todo
+        <img onClick={closeEdit} src={arrowLeft} alt="" className={filter} />{" "}
+        Edit Todo
       </div>
       <div className="edit-body">
         <input type="text" value={name} onChange={handleNameChange} />
