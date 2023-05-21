@@ -36,7 +36,7 @@ export const TodoList = ({ todolist }) => {
 
   return (
     <div className="todo-list-indv-cont">
-      <div className="todo-list-name">{todolist?.name}</div>
+      <div className="todo-list-name">{todolist?.id}</div>
       <div className="todo-card-create">
         {/* <div className="todo-header-root"> */}
         <div className="todo-header-create">

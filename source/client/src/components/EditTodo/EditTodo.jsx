@@ -7,13 +7,16 @@ import {
   editTodoInList,
   getTodoFromList,
 } from "../../utils/todoService";
+import { useAccount, useContractRead, useContractWrite } from "wagmi";
 import { useDispatch, useSelector } from "react-redux";
 
+import { CONTRACT } from "../../utils/constants";
 import arrowLeft from "../../assets/images/arrow-left.svg";
 import { updateState } from "../../redux/blockChainSlice";
 
 export const EditTodo = () => {
   const theme = useSelector((state) => state.rootReducer.settings);
+  const { address, isConnected } = useAccount();
   const filter = theme.state.themes?.[theme.state.activeTheme]?.svgFilter;
   const [searchParams, setSearchParams] = useSearchParams();
   const dispatch = useDispatch();
@@ -34,23 +37,33 @@ export const EditTodo = () => {
     setSearchParams(createSearchParams(params));
   };
 
-  const editTodo = () => {
-    if (name && value) {
-      editTodoInList(
-        searchParams.get("list-id"),
-        searchParams.get("edit-todo"),
-        name,
-        value
-      );
-      dispatch(updateState());
-    }
-  };
+  // contracts
+  const deleteTodo = useContractWrite({
+    address: CONTRACT.address,
+    abi: CONTRACT.todoListABI,
+    functionName: CONTRACT.contracts.write.deleteTodo,
+    args: [searchParams.get("edit-todo"), searchParams.get("list-id")],
+  });
+  const editTodoWrite = useContractWrite({
+    address: CONTRACT.address,
+    abi: CONTRACT.todoListABI,
+    functionName: CONTRACT.contracts.write.updateTodo,
+    args: [
+      searchParams.get("edit-todo"),
+      searchParams.get("list-id"),
+      name,
+      value,
+    ],
+  });
+  const editTodoInfo = useContractRead({
+    address: CONTRACT.address,
+    abi: CONTRACT.todoListABI,
+    functionName: CONTRACT.contracts.read.id2TodoItems,
+    args: [searchParams.get("list-id"), searchParams.get("edit-todo")],
+  });
 
   const delTodo = () => {
-    deleteTodoFromList(
-      searchParams.get("list-id"),
-      searchParams.get("edit-todo")
-    );
+    deleteTodo.write();
     let params = Object.fromEntries(searchParams);
     delete params["list-id"];
     delete params["edit-todo"];
@@ -58,20 +71,44 @@ export const EditTodo = () => {
     dispatch(updateState());
   };
 
+  const editTodo = () => {
+    if (name && value) {
+      editTodoWrite?.write();
+      // editTodoInList(
+      //   searchParams.get("list-id"),
+      //   searchParams.get("edit-todo"),
+      //   name,
+      //   value
+      // );
+      // dispatch(updateState());
+    }
+  };
+
   useEffect(() => {
-    setName(
-      getTodoFromList(
-        searchParams.get("list-id"),
-        searchParams.get("edit-todo")
-      )?.name
-    );
-    setValue(
-      getTodoFromList(
-        searchParams.get("list-id"),
-        searchParams.get("edit-todo")
-      )?.desc
-    );
-  }, [searchParams.get("list-id"), searchParams.get("edit-todo")]);
+    if (editTodoInfo?.data?.length) {
+      setName(editTodoInfo?.data?.[1]);
+      setValue(editTodoInfo?.data?.[2]);
+    }
+  }, [editTodoInfo?.data]);
+
+  useEffect(() => {
+    dispatch(updateState());
+  }, [deleteTodo?.isSuccess, editTodoWrite?.isSuccess]);
+
+  // useEffect(() => {
+  //   setName(
+  //     getTodoFromList(
+  //       searchParams.get("list-id"),
+  //       searchParams.get("edit-todo")
+  //     )?.name
+  //   );
+  //   setValue(
+  //     getTodoFromList(
+  //       searchParams.get("list-id"),
+  //       searchParams.get("edit-todo")
+  //     )?.desc
+  //   );
+  // }, [searchParams.get("list-id"), searchParams.get("edit-todo")]);
   return (
     <div className="edit-cont">
       <div className="edit-header">

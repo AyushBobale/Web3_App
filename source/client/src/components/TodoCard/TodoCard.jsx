@@ -20,11 +20,11 @@ export const TodoCard = ({ todo, todoListId }) => {
       <div className="todo-header-root">
         <div className="todo-header">
           <img src={todoIcon} alt="" />
-          <h3>{todo?.name}</h3>
+          <h3>{todo?.title}</h3>
         </div>
         <img onClick={openEdit} src={edit} alt="" />
       </div>
-      <p>{todo?.desc}</p>
+      <p>{todo?.description}</p>
     </div>
   );
 };
