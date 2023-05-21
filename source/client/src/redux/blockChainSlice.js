@@ -11,11 +11,7 @@ const initialState = {
     data: [],
     page: 0,
   },
-  todoListsAll: {
-    total: 1,
-    data: [],
-    page: 0,
-  },
+  allLists: [],
   updateDone: false,
 };
 
@@ -33,7 +29,15 @@ const accountSlice = createSlice({
       state.todoLists = payload;
     },
     setTodoListsAll: (state, { payload }) => {
-      state.todoListsAll = payload.todo;
+      state.allLists = payload.todo;
+      let total = Math.ceil((payload.todo?.length + 1) / payload.pageSize);
+      let startPos = parseInt(payload.page * (payload.pageSize || 0));
+      let endPos = parseInt(startPos + payload.pageSize);
+      state.todoLists = {
+        total: total,
+        data: payload.todo?.slice(startPos, endPos),
+        payload: parseInt(payload.page),
+      };
     },
   },
 });

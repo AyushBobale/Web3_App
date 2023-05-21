@@ -21,9 +21,10 @@ import { TodoList } from "../../components/TodoList/TodoList";
 import { getTodoListsPaginated } from "../../utils/todoService";
 
 export const Section8 = () => {
+  const { address, isConnected } = useAccount();
   const [searchParams, setSearchParams] = useSearchParams();
   const dispatch = useDispatch();
-  const { address, isConnected } = useAccount();
+
   const updateDone = useSelector(
     (state) => state.rootReducer.account.updateDone
   );
@@ -36,35 +37,40 @@ export const Section8 = () => {
     setSearchParams(createSearchParams(params));
   };
 
-  const { dataTodos, isErrorTodos, isLoadingTodos } = useContractRead({
+  const { data, isError, isLoading } = useContractRead({
     address: CONTRACT.address,
     abi: CONTRACT.todoListABI,
-    functionName: CONTRACT.contracts.read.todoCnt,
-    // args: ["0xDD9eaE13D20284248dBbdBF750369aBbCD71465b"],
+    functionName: CONTRACT.contracts.read.getTodos,
+    args: [address],
   });
 
-  console.log(dataTodos, address);
   useEffect(() => {
-    if (dataTodos) {
-      dispatch(setTodoListsAll({ todo: dataTodos }));
+    if (data?.length) {
+      dispatch(
+        setTodoListsAll({
+          todo: data,
+          pageSize: TODO_LISTS_PER_PAGE,
+          page: parseInt(searchParams.get("page")) || 0,
+        })
+      );
     }
-  }, [isConnected]);
+  }, [isConnected, searchParams.get("page")]);
 
-  useEffect(() => {
-    dispatch(
-      setTodoLists(
-        getTodoListsPaginated(
-          searchParams.get("page") || 0,
-          TODO_LISTS_PER_PAGE
-        )
-      )
-    );
-  }, [updateDone, searchParams.get("page")]);
+  // useEffect(() => {
+  //   dispatch(
+  //     setTodoLists(
+  //       getTodoListsPaginated(
+  //         searchParams.get("page") || 0,
+  //         TODO_LISTS_PER_PAGE
+  //       )
+  //     )
+  //   );
+  // }, [updateDone, searchParams.get("page")]);
 
   return (
     <div className="pagi-outer-cont">
       <PaginationNavigator
-        total={todoLists.total}
+        total={todoLists?.total || 0}
         pagePerView={3}
         setPage={setPage}
         activePage={searchParams.get("page") || 0}
