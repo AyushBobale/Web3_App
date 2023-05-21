@@ -33,8 +33,8 @@ export const Sidebar = () => {
   const { data: ensName } = useEnsName({ address });
   const { data, isError, isLoading } = useBalance({
     address: address,
-    watch: true,
   });
+  console.log(data, isError, isLoading);
   const { connect } = useConnect({
     connector: new InjectedConnector(),
   });
@@ -77,11 +77,11 @@ export const Sidebar = () => {
           <div className={sideBar ? "sidebar-profile open" : "sidebar-profile"}>
             <button className="btn-grey">
               <div className="circle-bg-bottom">
-                {isConnected ? `${data.formatted}` : ``}
+                {isConnected ? `${data?.formatted}` : ``}
               </div>
               {sideBar &&
                 (isConnected
-                  ? `${data.formatted} ${data.symbol}`
+                  ? `${data?.formatted} ${data?.symbol}`
                   : "Please log in")}
             </button>
             <button className="btn-light">{sideBar ? "Buy $XYZ" : "$"}</button>
