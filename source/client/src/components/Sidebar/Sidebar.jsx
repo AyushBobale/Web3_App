@@ -35,7 +35,6 @@ export const Sidebar = () => {
   const { data, isError, isLoading } = useBalance({
     address: address,
   });
-  console.log(data, isError, isLoading);
   const { connect } = useConnect({
     connector: new InjectedConnector(),
   });
@@ -83,12 +82,9 @@ export const Sidebar = () => {
           <div className={sideBar ? "sidebar-profile open" : "sidebar-profile"}>
             <button className="btn-grey">
               <div className="circle-bg-bottom">
-                {isConnected ? `${data?.formatted}` : ``}
+                {isConnected ? `${data?.formatted?.slice(0, 5)}` : ``}
               </div>
-              {sideBar &&
-                (isConnected
-                  ? `${data?.formatted} ${data?.symbol}`
-                  : "Please log in")}
+              {sideBar && (isConnected ? `${data?.symbol}` : "Please log in")}
             </button>
             <button className="btn-light">{sideBar ? "Buy $XYZ" : "$"}</button>
           </div>

@@ -2,7 +2,9 @@ import { Provider, useSelector } from "react-redux";
 import { Route, Routes } from "react-router-dom";
 import { ThemeProvider, createGlobalStyle } from "styled-components";
 import { WagmiConfig, configureChains, createConfig, mainnet } from "wagmi";
+import { bsc, bscTestnet, localhost } from "wagmi/chains";
 
+import { Chain } from "wagmi";
 import { Home } from "./pages/Home/Home";
 import { Layout } from "./components/layouts/Layout";
 import { PageNotFound } from "./pages/PageNotFound/PageNotFound";
@@ -12,7 +14,7 @@ import { SectionLayout } from "./components/layouts/SectionLayout";
 import { publicProvider } from "wagmi/providers/public";
 
 const { chains, publicClient, webSocketPublicClient } = configureChains(
-  [mainnet],
+  [mainnet, bsc, bscTestnet, localhost],
   [publicProvider()]
 );
 

@@ -1,7 +1,7 @@
 export const CONTRACT = {
-  address: "0xB1c8F617b626f634b1d37d2442eA54Af5b870238",
+  address: "0xB8b071cA6cBAAdC007a4E93538F9Ec9E5513E90c",
   contracts: {
-    read: { getUserIds: "getUserIds" },
+    read: { getUserIds: "getUserIds", getTodos: "getTodos" },
   },
   contractABI: [
     { stateMutability: "payable", type: "fallback" },

@@ -20,7 +20,9 @@ export const SectionLayout = () => {
         <div className="section-end">
           <div className="balance-btn">
             <img src={wallet} alt="" />
-            {isConnected ? `${data.formatted} ${data.symbol}` : "Please login"}
+            {isConnected
+              ? `${data?.formatted}  ${data?.symbol}`
+              : "Please login"}
             <button className="btn-light-bal">Tier 1</button>
           </div>
         </div>

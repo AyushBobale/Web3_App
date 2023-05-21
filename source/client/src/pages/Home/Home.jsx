@@ -3,14 +3,13 @@ import "swiper/css";
 import "swiper/css/navigation";
 
 import React, { useEffect } from "react";
-import { Swiper, SwiperSlide, useSwiper } from "swiper/react";
 import { useAccount, useConnect, useDisconnect, useEnsName } from "wagmi";
 
 import { ImageOnHover } from "../../components/ImageOnHover/ImageOnHover";
 import { InjectedConnector } from "wagmi/connectors/injected";
 import { Link } from "react-router-dom";
-import { Navigation } from "swiper";
 import deployed from "../../assets/images/deployed.PNG";
+import { ethers } from "ethers";
 import ganache from "../../assets/images/ganache.PNG";
 import localStore from "../../assets/images/local_store.PNG";
 import metaM from "../../assets/images/meta_m_conn.png";
@@ -30,6 +29,7 @@ export const Home = () => {
   useEffect(() => {
     dispatch(setInfo({ address, ensName, isConnected }));
   }, [isConnected, ensName, address]);
+
   return (
     <div className="home-root">
       <h1>Home</h1>{" "}
@@ -60,6 +60,7 @@ export const Home = () => {
       <ImageOnHover
         text={<p>Local storage based functionalty</p>}
         image={localStore}
+        height={"300px"}
       />
       <p>UI with some added features</p>
       <ImageOnHover text={<p>Support for themes</p>} image={themeSupp} />
@@ -71,6 +72,9 @@ export const Home = () => {
       <br />
       <h3>What is to be done ?</h3>
       <p>Wagmi to run contracts</p>
+      <br />
+      <h3>Main issues faced</h3>
+      <p>Getting a legit faucet website for tBNB</p>
       <br />
     </div>
   );
