@@ -9,12 +9,13 @@ import { ImageOnHover } from "../../components/ImageOnHover/ImageOnHover";
 import { InjectedConnector } from "wagmi/connectors/injected";
 import { Link } from "react-router-dom";
 import deployed from "../../assets/images/deployed.PNG";
-import { ethers } from "ethers";
 import ganache from "../../assets/images/ganache.PNG";
 import localStore from "../../assets/images/local_store.PNG";
+import local_contract from "../../assets/images/contracts_local.PNG";
 import metaM from "../../assets/images/meta_m_conn.png";
 import { setInfo } from "../../redux/blockChainSlice";
 import themeSupp from "../../assets/images/theme.PNG";
+import transHist from "../../assets/images/trans_hist.png";
 import { useDispatch } from "react-redux";
 
 export const Home = () => {
@@ -61,10 +62,24 @@ export const Home = () => {
         be some differences
       </p>
       <p>Contract address will also differ</p>
-      <h3>What is completed ? [ Hover over items to see more ]</h3>
+      <p>
+        At the time of deployment I will switch the AIB and address so that it
+        works with original chain
+      </p>
+      <h3>What is completed ? [ Hover over text to see images ]</h3>
       <ImageOnHover text={<p>Connecting Meta mask account</p>} image={metaM} />
       <ImageOnHover
-        text={<p>Local storage based functionalty</p>}
+        text={<p>Complete contracts working on local ganache blockchain</p>}
+        image={local_contract}
+      />
+      <ImageOnHover text={<p>Example transactions</p>} image={transHist} />
+      <ImageOnHover
+        text={
+          <p>
+            Local storage based functionalty [in case the Smart contract based
+            fails]
+          </p>
+        }
         image={localStore}
         height={"300px"}
       />
@@ -77,7 +92,14 @@ export const Home = () => {
       <ImageOnHover text={<p>Contracts Executed outside</p>} image={deployed} />
       <br />
       <h3>What is to be done ?</h3>
-      <p>Wagmi to run contracts</p>
+      <p>
+        Testing on BSC scans test net as I did not have access to TBNB I just
+        tested it locally on ganache
+      </p>
+      <p>
+        Hence I have no idea if this works on the deployed page [https/https]
+        communication won't happen
+      </p>
       <br />
       <h3>Main issues faced</h3>
       <p>Getting a legit faucet website for tBNB</p>

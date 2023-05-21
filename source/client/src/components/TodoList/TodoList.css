@@ -52,6 +52,9 @@
 }
 
 .todo-list-name {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   padding: 16px;
   width: 100%;
   background: var(--list-bg);
@@ -65,4 +68,8 @@
   text-align: left;
   border-radius: 12px;
   height: 50px;
+}
+
+.todo-list-name img {
+  cursor: pointer;
 }
