@@ -59,7 +59,6 @@ export const EditTodo = () => {
   };
 
   useEffect(() => {
-    console.log(searchParams.get("list-id"), searchParams.get("edit-todo"));
     setName(
       getTodoFromList(
         searchParams.get("list-id"),

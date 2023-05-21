@@ -55,6 +55,12 @@ export const Home = () => {
       </h1>
       <p>Other pages are implemented just to demonstrate nested routing</p>
       <br />
+      <h3>Key Notes</h3>
+      <p>
+        Since I compiled the sol files and deployed them seperately there might
+        be some differences
+      </p>
+      <p>Contract address will also differ</p>
       <h3>What is completed ? [ Hover over items to see more ]</h3>
       <ImageOnHover text={<p>Connecting Meta mask account</p>} image={metaM} />
       <ImageOnHover
