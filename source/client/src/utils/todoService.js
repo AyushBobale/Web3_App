@@ -2,13 +2,22 @@
 
 import { v4 as uuidv4 } from "uuid";
 
-// Function to retrieve todo lists from local storage
-export function getTodoLists() {
+const USE_LOCAL = true;
+
+function getTodoLists_LocalStorage() {
   const todoLists = JSON.parse(localStorage.getItem("todoLists"));
   return todoLists || [];
 }
 
-export function getTodoListsPaginated(page, pageSize) {
+export function getTodoLists() {
+  if (USE_LOCAL) {
+    return getTodoLists_LocalStorage();
+  }
+}
+
+//---------------------------------------------
+
+function getTodoListsPaginated_LocalStorage(page, pageSize) {
   const todoLists = JSON.parse(localStorage.getItem("todoLists"));
   if (!todoLists?.length) {
     return { total: 0, data: [], page: 0 };
@@ -16,16 +25,34 @@ export function getTodoListsPaginated(page, pageSize) {
   let total = Math.ceil((todoLists.length + 1) / pageSize);
   let startPos = page * pageSize || 0;
   let endPos = startPos + pageSize;
-  return { total: total, data: todoLists?.slice(startPos, endPos), page: page };
+  return {
+    total: total,
+    data: todoLists?.slice(startPos, endPos),
+    page: page,
+  };
 }
 
-// Function to save todo lists to local storage
-export function saveTodoLists(todoLists) {
+export function getTodoListsPaginated(page, pageSize) {
+  if (USE_LOCAL) {
+    return getTodoListsPaginated_LocalStorage(page, pageSize);
+  }
+}
+
+//---------------------------------------------
+
+function saveTodoLists_LocalStorage(todoLists) {
   localStorage.setItem("todoLists", JSON.stringify(todoLists));
 }
 
-// Function to add a new todo list
-export function addTodoList(name) {
+export function saveTodoLists(todoLists) {
+  if (USE_LOCAL) {
+    return saveTodoLists_LocalStorage(todoLists);
+  }
+}
+
+//---------------------------------------------
+
+function addTodoList_LocalStorage(name) {
   const todoList = {
     id: uuidv4(),
     name: name,
@@ -37,8 +64,15 @@ export function addTodoList(name) {
   saveTodoLists(todoLists);
 }
 
-// Function to add a new todo to a specific todo list
-export function addTodoToList(listId, todoName, todoDesc) {
+export function addTodoList(name) {
+  if (USE_LOCAL) {
+    return addTodoList_LocalStorage(name);
+  }
+}
+
+//---------------------------------------------
+
+function addTodoToList_LocalStorage(listId, todoName, todoDesc) {
   const todo = {
     id: uuidv4(),
     name: todoName,
@@ -54,7 +88,16 @@ export function addTodoToList(listId, todoName, todoDesc) {
   }
 }
 
-// Function to mark a todo as done or undone
+export function addTodoToList(listId, todoName, todoDesc) {
+  if (USE_LOCAL) {
+    return addTodoToList_LocalStorage(listId, todoName, todoDesc);
+  }
+}
+
+//---------------------------------------------
+// Not used
+//------------------------------------------
+
 export function toggleTodoStatus(listId, todoId) {
   const todoLists = getTodoLists();
   const todoList = todoLists.find((list) => list.id === listId);
@@ -67,7 +110,9 @@ export function toggleTodoStatus(listId, todoId) {
   }
 }
 
-// Function to delete a todo from a specific todo list
+//---------------------------------------------
+//  currently not used
+// --------------------------------------------
 export function deleteTodoFromList(listId, todoId) {
   const todoLists = getTodoLists();
   const todoList = todoLists.find((list) => list.id === listId);

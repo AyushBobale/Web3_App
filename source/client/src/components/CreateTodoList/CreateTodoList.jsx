@@ -5,7 +5,7 @@ import { createSearchParams, useSearchParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 
 import add from "../../assets/images/add.svg";
-import { addTodoList } from "../../utils/localStorageTodo";
+import { addTodoList } from "../../utils/todoService";
 import { updateState } from "../../redux/blockChainSlice";
 
 export const CreateTodoList = () => {

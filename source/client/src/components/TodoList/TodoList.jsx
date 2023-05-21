@@ -5,7 +5,7 @@ import React, { useState } from "react";
 
 import { TodoCard } from "../TodoCard/TodoCard";
 import add from "../../assets/images/add.svg";
-import { addTodoToList } from "../../utils/localStorageTodo";
+import { addTodoToList } from "../../utils/todoService";
 import edit from "../../assets/images/edit.svg";
 import todoIcon from "../../assets/images/todoIcon.svg";
 import { updateState } from "../../redux/blockChainSlice";

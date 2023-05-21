@@ -4,7 +4,7 @@ import "swiper/css/navigation";
 
 import React, { useEffect } from "react";
 import { Swiper, SwiperSlide, useSwiper } from "swiper/react";
-import { useAccount, useConnect, useEnsName } from "wagmi";
+import { useAccount, useConnect, useDisconnect, useEnsName } from "wagmi";
 
 import { InjectedConnector } from "wagmi/connectors/injected";
 import { Navigation } from "swiper";
@@ -18,6 +18,7 @@ export const Home = () => {
   const { connect } = useConnect({
     connector: new InjectedConnector(),
   });
+  const { disconnect } = useDisconnect();
 
   useEffect(() => {
     dispatch(setInfo({ address, ensName, isConnected }));
@@ -31,6 +32,13 @@ export const Home = () => {
         onClick={() => connect()}
       >
         {!isConnected ? "Connect" : "Connected"}
+      </button>
+      <button
+        disabled={!isConnected}
+        className="btn-dark"
+        onClick={() => disconnect()}
+      >
+        {isConnected ? "Disconnect" : "Disconnected"}
       </button>
       <h1>Heading 1</h1>
       <h2>Heading 2</h2>

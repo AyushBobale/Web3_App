@@ -8,7 +8,7 @@ import { CreateTodoList } from "../../components/CreateTodoList/CreateTodoList";
 import { EditTodo } from "../../components/EditTodo/EditTodo";
 import { PaginationNavigator } from "../../components/PaginationNavigator/PaginationNavigator";
 import { TodoList } from "../../components/TodoList/TodoList";
-import { getTodoListsPaginated } from "../../utils/localStorageTodo";
+import { getTodoListsPaginated } from "../../utils/todoService";
 import { setTodoLists } from "../../redux/blockChainSlice";
 
 export const Section8 = () => {
