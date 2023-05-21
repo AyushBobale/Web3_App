@@ -2,7 +2,11 @@ import "./EditTodo.css";
 
 import React, { useEffect, useState } from "react";
 import { createSearchParams, useSearchParams } from "react-router-dom";
-import { editTodoInList, getTodoFromList } from "../../utils/todoService";
+import {
+  deleteTodoFromList,
+  editTodoInList,
+  getTodoFromList,
+} from "../../utils/todoService";
 
 import arrowLeft from "../../assets/images/arrow-left.svg";
 import { updateState } from "../../redux/blockChainSlice";
@@ -40,6 +44,14 @@ export const EditTodo = () => {
     }
   };
 
+  const delTodo = () => {
+    deleteTodoFromList(
+      searchParams.get("list-id"),
+      searchParams.get("edit-todo")
+    );
+    dispatch(updateState());
+  };
+
   useEffect(() => {
     console.log(searchParams.get("list-id"), searchParams.get("edit-todo"));
     setName(
@@ -65,6 +77,9 @@ export const EditTodo = () => {
         <textarea value={value} onChange={handleChange}></textarea>
         <button className="btn-dark" onClick={editTodo}>
           Save
+        </button>
+        <button className="btn-dark" onClick={delTodo}>
+          Delete
         </button>
       </div>
     </div>

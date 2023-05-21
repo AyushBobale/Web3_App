@@ -121,6 +121,32 @@ export function editTodoInList(listId, todoId, name, desc) {
 
 //---------------------------------------------
 
+function deleteTodoList_LocalStorgae(listId, todoId) {
+  // const todo = {
+  //   id: todoId,
+  //   name: name,
+  //   desc: desc,
+  //   isDone: false,
+  // };
+  const todoLists = getTodoLists();
+  const todoList = todoLists.find((list) => list.id === listId);
+  if (todoList) {
+    let idx = todoList.todos.findIndex((item) => item.id === todoId);
+    let newList = todoList.todos.splice(idx, 1);
+    let listIdx = todoLists.findIndex((list) => list.id === listId);
+    todoLists[listIdx] = newList;
+    saveTodoLists(todoLists);
+  }
+}
+
+export function deleteTodoInList(listId, todoId) {
+  if (USE_LOCAL) {
+    deleteTodoList_LocalStorgae(listId, todoId);
+  }
+}
+
+//---------------------------------------------
+
 function getTodoFromList_LocalStorage(listId, todoId) {
   const todoLists = getTodoLists();
   const todoList = todoLists.find((list) => list.id === listId);

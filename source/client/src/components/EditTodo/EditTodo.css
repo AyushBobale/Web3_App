@@ -9,6 +9,11 @@
   margin-bottom: 1rem;
 }
 
+.edit-header img {
+  transform: scaleX(-100%);
+  margin-right: 1rem;
+}
+
 .edit-body {
   display: flex;
   gap: 1rem;
