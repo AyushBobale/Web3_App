@@ -49,6 +49,10 @@ export const EditTodo = () => {
       searchParams.get("list-id"),
       searchParams.get("edit-todo")
     );
+    let params = Object.fromEntries(searchParams);
+    delete params["list-id"];
+    delete params["edit-todo"];
+    setSearchParams(createSearchParams(params));
     dispatch(updateState());
   };
 
