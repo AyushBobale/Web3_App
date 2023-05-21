@@ -49,27 +49,29 @@ export const Section8 = () => {
   //   // args: ["0xDD9eaE13D20284248dBbdBF750369aBbCD71465b"],
   // });
 
-  // const { data, isLoading, isSuccess, write } = useContractWrite({
-  //   address: CONTRACT.address,
-  //   abi: CONTRACT.todoListABI,
-  //   functionName: CONTRACT.contracts.write.addList,
-  //   args: ["List name"],
-  //   onError(error) {
-  //     console.log("Error", error);
-  //   },
+  // const { data, isLoading, isSuccess, sendTransaction } = useSendTransaction({
+  //   to: "0x19226CB6AB87AA62DAd089086426071244272463",
+  //   value: (1 * 1e18).toString(),
   // });
 
-  const { data, isLoading, isSuccess, sendTransaction } = useSendTransaction({
-    to: "0x19226CB6AB87AA62DAd089086426071244272463",
-    value: (1 * 1e18).toString(),
+  const { data, isLoading, isSuccess, write } = useContractWrite({
+    address: CONTRACT.address,
+    abi: CONTRACT.todoListABI,
+    functionName: CONTRACT.contracts.write.addList,
+    args: ["List name"],
+    onError(error) {
+      console.log("Error", error);
+    },
   });
+
   useEffect(() => {
     console.log(data, isLoading);
   }, [data, isLoading]);
 
   const clickHandler = () => {
     console.log("Clicked");
-    sendTransaction();
+    // sendTransaction();
+    write();
   };
 
   useEffect(() => {
