@@ -118,6 +118,7 @@ export const Home = () => {
         <br />
       </div>
       <div className="home-right">
+        <h1>Working example on localy hosted blockchain</h1>
         <iframe
           src="https://drive.google.com/file/d/1MMHhygIeCybjU48dsbhAo9ZzjiFYzfjN/preview"
           width="640"

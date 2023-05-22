@@ -12,6 +12,8 @@
 
 .home-right {
   display: flex;
+  flex-direction: column;
+  gap: 1rem;
   align-self: center;
   justify-content: center;
   width: 40%;
