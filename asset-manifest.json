@@ -1,0 +1,39 @@
+{
+  "files": {
+    "main.css": "/Web3_App/static/css/main.7187359d.css",
+    "main.js": "/Web3_App/static/js/main.13bba9af.js",
+    "static/js/180.2eaf69e9.chunk.js": "/Web3_App/static/js/180.2eaf69e9.chunk.js",
+    "static/js/327.e8d2ed0e.chunk.js": "/Web3_App/static/js/327.e8d2ed0e.chunk.js",
+    "static/media/ganache.PNG": "/Web3_App/static/media/ganache.58463f6ddf49b85ee960.PNG",
+    "static/media/deployed.PNG": "/Web3_App/static/media/deployed.5fec03c00b1d96b8e039.PNG",
+    "static/media/meta_m_conn.png": "/Web3_App/static/media/meta_m_conn.ac8eb2569ced191d9893.png",
+    "static/media/theme.PNG": "/Web3_App/static/media/theme.fb9c22c56640aa838feb.PNG",
+    "static/media/local_store.PNG": "/Web3_App/static/media/local_store.4c90c8296d20ca56737a.PNG",
+    "static/media/contracts_local.PNG": "/Web3_App/static/media/contracts_local.495a9b2f64b99820dbbd.PNG",
+    "static/media/trans_hist.png": "/Web3_App/static/media/trans_hist.c9ce8160d74f15998e7d.png",
+    "static/media/section2.svg": "/Web3_App/static/media/section2.496f81eee159c62221c1b1667171b93d.svg",
+    "static/media/Language.svg": "/Web3_App/static/media/Language.5fdc92f324e26b0be1f0ef94dfeddb05.svg",
+    "static/media/home.svg": "/Web3_App/static/media/home.efc0af2a2ca2b71f5b10e96bb9b7cd97.svg",
+    "static/media/theme.svg": "/Web3_App/static/media/theme.d8542cfb9ea99ee3a88904350619fadf.svg",
+    "static/media/section8.svg": "/Web3_App/static/media/section8.406b6b22de42bdfa208c5db4df9c2828.svg",
+    "static/media/section8Active.svg": "/Web3_App/static/media/section8Active.6aaefc518a4a6235c21225ff5f57339e.svg",
+    "static/media/edit.svg": "/Web3_App/static/media/edit.6919ea8b65c4d075769a2f46a11c4ae4.svg",
+    "static/media/section1.svg": "/Web3_App/static/media/section1.eafc0577f9e438e7517c4f3b8de4f5bf.svg",
+    "static/media/Wallet.svg": "/Web3_App/static/media/Wallet.6131bb13dfb250a4a81da38bca313cde.svg",
+    "static/media/todoIcon.svg": "/Web3_App/static/media/todoIcon.bbf886259ebef1843f6a33920d940642.svg",
+    "index.html": "/Web3_App/index.html",
+    "static/media/closingIcon.svg": "/Web3_App/static/media/closingIcon.eee5645f0de7429f0ba5e332b50f0afb.svg",
+    "static/media/arrow-left.svg": "/Web3_App/static/media/arrow-left.ab888b54018e0d4d2813ba293ea5f19a.svg",
+    "static/media/add.svg": "/Web3_App/static/media/add.e2f430ad61b0369325d6d2f8bd08124d.svg",
+    "static/media/profile.svg": "/Web3_App/static/media/profile.1781767955570e064565b428f188f4af.svg",
+    "static/media/Path.svg": "/Web3_App/static/media/Path.5d02463beb6f668901b433647c1e7d66.svg",
+    "main.7187359d.css.map": "/Web3_App/static/css/main.7187359d.css.map",
+    "main.13bba9af.js.map": "/Web3_App/static/js/main.13bba9af.js.map",
+    "180.2eaf69e9.chunk.js.map": "/Web3_App/static/js/180.2eaf69e9.chunk.js.map",
+    "327.e8d2ed0e.chunk.js.map": "/Web3_App/static/js/327.e8d2ed0e.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.7187359d.css",
+    "static/js/main.13bba9af.js"
+  ]
+}
