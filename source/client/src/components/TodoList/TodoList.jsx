@@ -5,6 +5,7 @@ import React, { useEffect, useState } from "react";
 import { useAccount, useContractWrite } from "wagmi";
 
 import { CONTRACT } from "../../utils/constants";
+import ErrorAlert from "../ErrorAlert/ErrorAlert";
 import { TodoCard } from "../TodoCard/TodoCard";
 import add from "../../assets/images/add.svg";
 import { addTodoToList } from "../../utils/todoService";
@@ -19,6 +20,10 @@ export const TodoList = ({ todolist }) => {
   const { address, isConnected } = useAccount();
   const [todoName, setTodoName] = useState("");
   const dispatch = useDispatch();
+  const [isError, setError] = useState({
+    state: false,
+    message: "",
+  });
 
   // contracts
   const deleteTodoList = useContractWrite({
@@ -50,6 +55,11 @@ export const TodoList = ({ todolist }) => {
       // addTodoToList(todolist?.id, todoName, value);
 
       dispatch(updateState());
+    } else {
+      setError({
+        state: true,
+        message: "Todo title or description cannot be empty",
+      });
     }
   };
 
@@ -70,6 +80,14 @@ export const TodoList = ({ todolist }) => {
 
   return (
     <div className="todo-list-indv-cont">
+      {isError.state && (
+        <ErrorAlert
+          message={isError.message}
+          onClose={() => {
+            setError({ state: false, message: "" });
+          }}
+        />
+      )}
       <div className="todo-list-name">
         {todolist?.id}
         <img src={dash} onClick={() => delTodoList()} alt="" />

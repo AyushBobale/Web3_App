@@ -1,0 +1,22 @@
+.error-alert {
+  position: fixed;
+  top: var(--header-height);
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #e74646;
+  color: white;
+  padding: 10px;
+  text-align: center;
+  width: 300px;
+  z-index: 30;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.close-cross {
+  height: 32px;
+  width: 32px;
+  cursor: pointer;
+}

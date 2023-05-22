@@ -11,6 +11,7 @@ import { useAccount, useContractRead, useContractWrite } from "wagmi";
 import { useDispatch, useSelector } from "react-redux";
 
 import { CONTRACT } from "../../utils/constants";
+import ErrorAlert from "../ErrorAlert/ErrorAlert";
 import arrowLeft from "../../assets/images/arrow-left.svg";
 import { updateState } from "../../redux/blockChainSlice";
 
@@ -22,6 +23,10 @@ export const EditTodo = () => {
   const dispatch = useDispatch();
   const [value, setValue] = useState("");
   const [name, setName] = useState("");
+  const [isError, setError] = useState({
+    state: false,
+    message: "",
+  });
 
   const handleChange = (event) => {
     setValue(event.target.value);
@@ -81,6 +86,11 @@ export const EditTodo = () => {
       //   value
       // );
       // dispatch(updateState());
+    } else {
+      setError({
+        state: true,
+        message: "Todo title or description cannot be empty",
+      });
     }
   };
 
@@ -111,6 +121,14 @@ export const EditTodo = () => {
   // }, [searchParams.get("list-id"), searchParams.get("edit-todo")]);
   return (
     <div className="edit-cont">
+      {isError.state && (
+        <ErrorAlert
+          message={isError.message}
+          onClose={() => {
+            setError({ state: false, message: "" });
+          }}
+        />
+      )}
       <div className="edit-header">
         <img onClick={closeEdit} src={arrowLeft} alt="" className={filter} />{" "}
         Edit Todo

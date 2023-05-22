@@ -469,7 +469,7 @@ const todoListBscABI = [
 const localAddress = "0xb8b071ca6cbaadc007a4e93538f9ec9e5513e90c";
 const BscTestNetAddress = "0xdAF06E9F17C7aF4CD781DA3CdfC9338ffab440cD";
 export const CONTRACT = {
-  address: BscTestNetAddress,
+  address: localAddress,
   contracts: {
     write: {
       addList: "addList",
@@ -490,5 +490,5 @@ export const CONTRACT = {
       users: "users",
     },
   },
-  todoListABI: todoListBscABI,
+  todoListABI: todoLisABI,
 };
