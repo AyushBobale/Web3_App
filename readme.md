@@ -2,7 +2,7 @@
 
 ## A web app created using [Wagmi]("https://wagmi.sh/") a wrapper library around ether js
 
-- [Live application ]("https://ayushbobale-web3app.netlify.app/home")
+- [Live application ](https://ayushbobale-web3app.netlify.app/home)
 
 - [Locally hosted blockchain](https://drive.google.com/file/d/1MMHhygIeCybjU48dsbhAo9ZzjiFYzfjN/view?usp=sharing)
 
