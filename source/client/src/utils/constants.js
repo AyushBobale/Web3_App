@@ -466,7 +466,7 @@ const todoListBscABI = [
   },
   { stateMutability: "payable", type: "receive" },
 ];
-const localAddress = "0xb8b071ca6cbaadc007a4e93538f9ec9e5513e90c";
+const localAddress = "0xa9a25AA103CfcaEAc13fCd0Eb29C2aA24659e371";
 const BscTestNetAddress = "0xdAF06E9F17C7aF4CD781DA3CdfC9338ffab440cD";
 export const CONTRACT = {
   address: BscTestNetAddress,

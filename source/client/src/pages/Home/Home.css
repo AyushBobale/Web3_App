@@ -3,6 +3,18 @@
   display: flex;
   gap: 1rem;
   flex-direction: column;
+  width: 55%;
+}
+
+.home-split {
+  display: flex;
+}
+
+.home-right {
+  display: flex;
+  align-self: center;
+  justify-content: center;
+  width: 40%;
 }
 
 .connection-btn-wrap {
